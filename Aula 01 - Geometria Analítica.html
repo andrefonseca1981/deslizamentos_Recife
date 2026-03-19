@@ -9,9 +9,9 @@
         :root {
             --bg-dark: #0f172a;
             --bg-card: #1e293b;
-            --primary: #38bdf8; /* Cyan */
-            --secondary: #818cf8; /* Indigo */
-            --accent: #f472b6; /* Pink */
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #f472b6;
             --success: #34d399;
             --text-main: #f1f5f9;
             --text-muted: #94a3b8;
@@ -19,45 +19,20 @@
             --glass: rgba(30, 41, 59, 0.7);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* --- Header --- */
         header {
             background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-dark) 100%);
             padding: 2rem 1rem;
             text-align: center;
             border-bottom: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
-            animation: pulse 10s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
 
         h1 {
@@ -67,24 +42,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
-            position: relative;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            position: relative;
-        }
-
+        .subtitle { color: var(--text-muted); font-size: 1rem; }
         .prof-info {
             margin-top: 1rem;
             font-size: 0.9rem;
             color: var(--primary);
             font-family: 'JetBrains Mono', monospace;
-            position: relative;
         }
 
-        /* --- Layout --- */
         main {
             max-width: 1200px;
             margin: 0 auto;
@@ -95,15 +62,10 @@
         }
 
         @media (min-width: 768px) {
-            main {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .full-width {
-                grid-column: 1 / -1;
-            }
+            main { grid-template-columns: repeat(2, 1fr); }
+            .full-width { grid-column: 1 / -1; }
         }
 
-        /* --- Cards --- */
         .card {
             background: var(--glass);
             backdrop-filter: blur(10px);
@@ -111,7 +73,6 @@
             border-radius: 16px;
             padding: 1.5rem;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .card:hover {
@@ -135,10 +96,7 @@
             color: var(--primary);
         }
 
-        /* --- Controls --- */
-        .control-group {
-            margin-bottom: 1rem;
-        }
+        .control-group { margin-bottom: 1rem; }
 
         label {
             display: block;
@@ -164,11 +122,6 @@
             background: var(--primary);
             border-radius: 50%;
             cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            background: var(--secondary);
         }
 
         input[type="number"] {
@@ -189,22 +142,10 @@
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
             width: 100%;
             margin-top: 1rem;
         }
 
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        /* --- Canvas --- */
         .canvas-container {
             position: relative;
             background: var(--bg-dark);
@@ -215,11 +156,7 @@
             width: 100%;
         }
 
-        canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+        canvas { display: block; width: 100%; height: 100%; }
 
         .overlay-info {
             position: absolute;
@@ -231,10 +168,8 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
             color: var(--success);
-            pointer-events: none;
         }
 
-        /* --- Concepts Grid --- */
         .concept-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -254,14 +189,31 @@
             margin-bottom: 0.5rem;
         }
 
-        /* --- Footer --- */
+        .toggle-container { display: flex; gap: 1rem; margin-bottom: 1rem; }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 0.5rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .toggle-btn.active {
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+        }
+
         footer {
             text-align: center;
             padding: 3rem 1rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
             margin-top: 2rem;
-            font-size: 0.9rem;
         }
 
         .next-class {
@@ -273,41 +225,8 @@
             display: inline-block;
         }
 
-        /* --- Utility --- */
-        .math {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--secondary);
-        }
-        
-        .highlight {
-            color: var(--accent);
-            font-weight: bold;
-        }
-
-        .toggle-container {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 0.5rem;
-            background: var(--bg-dark);
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .toggle-btn.active {
-            background: var(--primary);
-            color: var(--bg-dark);
-            border-color: var(--primary);
-        }
-
+        .math { font-family: 'JetBrains Mono', monospace; color: var(--secondary); }
+        .highlight { color: var(--accent); font-weight: bold; }
     </style>
 </head>
 <body>
@@ -319,7 +238,6 @@
 </header>
 
 <main>
-    <!-- Section 1: Conceitos Básicos -->
     <section class="card full-width">
         <div class="card-header">
             <div class="card-title">1. Escalar vs. Vetorial</div>
@@ -342,7 +260,6 @@
         </div>
     </section>
 
-    <!-- Section 2: Construtor de Vetores -->
     <section class="card">
         <div class="card-header">
             <div class="card-title">2. Construtor de Vetores</div>
@@ -373,7 +290,6 @@
         </div>
     </section>
 
-    <!-- Section 3: Operações -->
     <section class="card">
         <div class="card-header">
             <div class="card-title">3. Adição de Vetores</div>
@@ -403,7 +319,6 @@
         </div>
     </section>
 
-    <!-- Section 4: Multiplicação por Escalar -->
     <section class="card">
         <div class="card-header">
             <div class="card-title">4. Multiplicação por Escalar</div>
@@ -430,7 +345,6 @@
         </div>
     </section>
 
-    <!-- Section 5: Calculadora de Pontos (Exercícios) -->
     <section class="card full-width">
         <div class="card-header">
             <div class="card-title">5. Calculadora de Vetor entre Pontos (A→B)</div>
@@ -462,7 +376,6 @@
         </div>
     </section>
 
-    <!-- Section 6: Aplicações e Próximos Passos -->
     <section class="card full-width" style="border-color: var(--secondary);">
         <div class="card-header">
             <div class="card-title" style="color: var(--secondary);">Aplicações na Física</div>
@@ -482,61 +395,32 @@
 
 <footer>
     <p>Referências: Winterle (2014), Stewart (Cálculo v.2), Lima (IMPA).</p>
-    <p style="margin-top: 0.5rem; opacity: 0.5;">Desenvolvido para fins educacionais | IFRN Campus Santa Cruz</p>
+    <p style="margin-top: 0.5rem; opacity: 0.5;">IFRN Campus Santa Cruz</p>
 </footer>
 
 <script>
-    // --- Utilities ---
     const getEl = (id) => document.getElementById(id);
     
-    // --- Canvas Setup ---
-    function setupCanvas(canvasId, drawFunction) {
-        const canvas = getEl(canvasId);
-        const ctx = canvas.getContext('2d');
-        
-        // Handle DPI
-        function resize() {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width * 2;
-            canvas.height = rect.height * 2;
-            ctx.scale(2, 2);
-            drawFunction(ctx, rect.width, rect.height);
-        }
-        
-        window.addEventListener('resize', resize);
-        resize();
-        return { canvas, ctx };
-    }
-
-    // --- Drawing Helpers ---
     function drawGrid(ctx, width, height, scale = 20) {
         ctx.strokeStyle = '#334155';
         ctx.lineWidth = 0.5;
         ctx.beginPath();
-        // Center
         const cx = width / 2;
         const cy = height / 2;
         
-        // Vertical lines
         for (let x = cx % scale; x < width; x += scale) {
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
+            ctx.moveTo(x, 0); ctx.lineTo(x, height);
         }
-        // Horizontal lines
         for (let y = cy % scale; y < height; y += scale) {
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
+            ctx.moveTo(0, y); ctx.lineTo(width, y);
         }
         ctx.stroke();
 
-        // Axes
         ctx.strokeStyle = '#94a3b8';
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(cx, 0);
-        ctx.lineTo(cx, height);
-        ctx.moveTo(0, cy);
-        ctx.lineTo(width, cy);
+        ctx.moveTo(cx, 0); ctx.lineTo(cx, height);
+        ctx.moveTo(0, cy); ctx.lineTo(width, cy);
         ctx.stroke();
 
         return { cx, cy };
@@ -568,21 +452,29 @@
         }
     }
 
-    // --- Module 1: Vector Constructor ---
-    const vecCanvas = setupCanvas('vectorCanvas', (ctx, w, h) => {
-        const { cx, cy } = drawGrid(ctx, w, h);
+    // Module 1: Vector Constructor - CORRIGIDO
+    const canvas1 = getEl('vectorCanvas');
+    const ctx1 = canvas1.getContext('2d');
+
+    function drawVectorConstructor() {
+        ctx1.setTransform(1, 0, 0, 1, 0, 0);
+        canvas1.width = canvas1.parentElement.offsetWidth * 2;
+        canvas1.height = canvas1.parentElement.offsetHeight * 2;
+        ctx1.scale(2, 2);
+        const w = canvas1.width / 2;
+        const h = canvas1.height / 2;
+        
+        const { cx, cy } = drawGrid(ctx1, w, h);
         const scale = 20;
         
         const vx = parseInt(getEl('slideX').value);
         const vy = parseInt(getEl('slideY').value);
         
-        // Invert Y for Cartesian coordinates
         const endX = cx + vx * scale;
         const endY = cy - vy * scale;
 
-        drawArrow(ctx, cx, cy, endX, endY, '#38bdf8', 'v');
+        drawArrow(ctx1, cx, cy, endX, endY, '#38bdf8', 'v');
 
-        // Update Info
         const mod = Math.sqrt(vx*vx + vy*vy).toFixed(2);
         getEl('valX').innerText = vx;
         getEl('valY').innerText = vy;
@@ -596,14 +488,14 @@
         } else {
             getEl('unitValue').innerText = "⟨0, 0⟩";
         }
-    });
+    }
 
-    // Listeners for Module 1
-    getEl('slideX').addEventListener('input', () => vecCanvas.drawFunction(vecCanvas.ctx, vecCanvas.canvas.width/2, vecCanvas.canvas.height/2));
-    getEl('slideY').addEventListener('input', () => vecCanvas.drawFunction(vecCanvas.ctx, vecCanvas.canvas.width/2, vecCanvas.canvas.height/2));
+    drawVectorConstructor();
+    getEl('slideX').addEventListener('input', drawVectorConstructor);
+    getEl('slideY').addEventListener('input', drawVectorConstructor);
+    window.addEventListener('resize', drawVectorConstructor);
 
-
-    // --- Module 2: Addition ---
+    // Module 2: Addition
     let addMode = 'triangle';
     function setAddMode(mode) {
         addMode = mode;
@@ -612,14 +504,9 @@
         drawAddition();
     }
 
-    const addCanvas = setupCanvas('addCanvas', (ctx, w, h) => {
-        // This function is called manually via drawAddition to access current slider values
-    });
-
     function drawAddition() {
         const canvas = getEl('addCanvas');
         const ctx = canvas.getContext('2d');
-        // Reset transform for clear
         ctx.setTransform(1, 0, 0, 1, 0, 0); 
         canvas.width = canvas.parentElement.offsetWidth * 2;
         canvas.height = canvas.parentElement.offsetHeight * 2;
@@ -638,7 +525,6 @@
         const sumX = ux + vx;
         const sumY = uy + vy;
 
-        // Coordinates (Cartesian Y inverted)
         const uEndX = cx + ux * scale;
         const uEndY = cy - uy * scale;
         
@@ -648,23 +534,15 @@
         const sumEndX = cx + sumX * scale;
         const sumEndY = cy - sumY * scale;
 
-        // Draw u
         drawArrow(ctx, cx, cy, uEndX, uEndY, '#38bdf8', 'u');
         
         if (addMode === 'triangle') {
-            // Draw v starting from u end
             drawArrow(ctx, uEndX, uEndY, uEndX + (vx * scale), uEndY - (vy * scale), '#818cf8', 'v');
-            // Draw Sum
             drawArrow(ctx, cx, cy, sumEndX, sumEndY, '#f472b6', 'u+v');
         } else {
-            // Parallelogram
-            // Draw v from origin
             drawArrow(ctx, cx, cy, vEndX, vEndY, '#818cf8', 'v');
-            // Draw parallel u from v end
             drawArrow(ctx, vEndX, vEndY, vEndX + (ux * scale), vEndY - (uy * scale), '#38bdf8', '');
-            // Draw parallel v from u end
             drawArrow(ctx, uEndX, uEndY, uEndX + (vx * scale), uEndY - (vy * scale), '#818cf8', '');
-            // Draw Sum
             drawArrow(ctx, cx, cy, sumEndX, sumEndY, '#f472b6', 'u+v');
         }
 
@@ -672,17 +550,24 @@
         getEl('resultVec').innerText = `⟨${sumX}, ${sumY}⟩`;
     }
 
-    // Listeners for Module 2
     ['slideUx', 'slideUy', 'slideVx', 'slideVy'].forEach(id => {
         getEl(id).addEventListener('input', drawAddition);
     });
-    // Initial draw
     setTimeout(drawAddition, 100);
 
+    // Module 3: Scalar Multiplication
+    const canvas3 = getEl('scalarCanvas');
+    const ctx3 = canvas3.getContext('2d');
 
-    // --- Module 3: Scalar Multiplication ---
-    const scalarCanvas = setupCanvas('scalarCanvas', (ctx, w, h) => {
-        const { cx, cy } = drawGrid(ctx, w, h);
+    function drawScalarMult() {
+        ctx3.setTransform(1, 0, 0, 1, 0, 0);
+        canvas3.width = canvas3.parentElement.offsetWidth * 2;
+        canvas3.height = canvas3.parentElement.offsetHeight * 2;
+        ctx3.scale(2, 2);
+        const w = canvas3.width / 2;
+        const h = canvas3.height / 2;
+
+        const { cx, cy } = drawGrid(ctx3, w, h);
         const scale = 30;
         
         const vx = parseFloat(getEl('baseVx').value);
@@ -694,22 +579,19 @@
         const origEndX = cx + vx * scale;
         const origEndY = cy - vy * scale;
 
-        // Draw Original (faded)
-        drawArrow(ctx, cx, cy, origEndX, origEndY, '#334155', 'v');
-        // Draw Scaled
-        drawArrow(ctx, cx, cy, endX, endY, k < 0 ? '#f472b6' : '#34d399', `k·v`);
+        drawArrow(ctx3, cx, cy, origEndX, origEndY, '#334155', 'v');
+        drawArrow(ctx3, cx, cy, endX, endY, k < 0 ? '#f472b6' : '#34d399', `k·v`);
 
         getEl('valK').innerText = k.toFixed(1);
         getEl('scalarInfo').innerText = `k = ${k.toFixed(1)}`;
-    });
+    }
 
-    // Listeners for Module 3
-    getEl('slideK').addEventListener('input', () => scalarCanvas.drawFunction(scalarCanvas.ctx, scalarCanvas.canvas.width/2, scalarCanvas.canvas.height/2));
-    getEl('baseVx').addEventListener('input', () => scalarCanvas.drawFunction(scalarCanvas.ctx, scalarCanvas.canvas.width/2, scalarCanvas.canvas.height/2));
-    getEl('baseVy').addEventListener('input', () => scalarCanvas.drawFunction(scalarCanvas.ctx, scalarCanvas.canvas.width/2, scalarCanvas.canvas.height/2));
+    getEl('slideK').addEventListener('input', drawScalarMult);
+    getEl('baseVx').addEventListener('input', drawScalarMult);
+    getEl('baseVy').addEventListener('input', drawScalarMult);
+    setTimeout(drawScalarMult, 100);
 
-
-    // --- Module 4: Calculator ---
+    // Module 4: Calculator
     function calculateAB() {
         const ax = parseFloat(getEl('pointAx').value);
         const ay = parseFloat(getEl('pointAy').value);
@@ -726,7 +608,6 @@
         
         getEl('calcResult').style.display = 'block';
     }
-
 </script>
 
 </body>
